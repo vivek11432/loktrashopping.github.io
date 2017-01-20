@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="LoktraCart">
+<head>
+    <title>Loktra Kart</title>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.14.1/build/cssreset/cssreset-min.css">
+    <script data-require="angular.js@*" data-semver="1.2.14" src="http://code.angularjs.org/1.2.14/angular.js"></script>
+    <link href="css/shoppingcss.css" rel="stylesheet" />
+    <script src="js/shoppingjs.js"></script>
+</head>
+<body>
+    <div ng-controller="ItemListController">
+        <br />
+        <button class="cart-clear" ng-click="clearcart()">Clear Cart</button>
+        <button class="cart-refresh" ng-click="refreshcart()">Refresh</button>
+        <br />
+        <div class="products-wrapper">
+            <ul class="cart-item--list">
+                <li class="cart-item" ng-repeat="item in cart">
+                    <button class="cart-item--remove product-button" ng-click="removeProduct(item.id,this)">Remove</button>
+                    <h1 class="cart-item--name product-text--large">{{item.name}}</h1>
+                    <p class="cart-item--quantity product-text--small">Quantity - {{item.quantity}}</p>
+                    <button class="cart-item--remove product-button widthIncDec" ng-click="decreaseQuantity(item.id)">Decrease Quantity</button>
+                    <button class="cart-item--remove product-button widthIncDec" ng-click="increaseQuantity(item.id)">Increase Quantity</button>
+                </li>
+            </ul>
+            <ul class="products-list">
+                <li class="products-list_item" ng-repeat="product in products">
+                    <h1 class="product-name product-text product-text--large">{{product.name}}</h1>
+                    <h3 class="product-price product-text product-text--medium">{{product.price}}</h3>
+                    <p class="product-description product-text product-text--small">{{product.description}}</p>
+                    <button class="product-add_to_cart product-button" ng-click="addProduct($index)">Add to Cart</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
